@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
 
-  valedates :text, presence: true
+  belongs_to :user
+
+  validates :text, :user, presence: true
 end
