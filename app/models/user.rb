@@ -10,6 +10,9 @@ class User < ApplicationRecord
 
   attr_accessor :password
 
+  before_validation :convert_to_downcase
+  before_save :encrypt_password
+
   validates :username,
            presence: true,
            uniqueness: true,
@@ -26,10 +29,8 @@ class User < ApplicationRecord
             presence: true,
             on: :create
 
-  before_validation :convert_to_downcase
-
-  before_save :encrypt_password
-
+  private
+  
   def convert_to_downcase
     username&.downcase!
     email&.downcase!
