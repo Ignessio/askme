@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
   def index
+    @users = [
+      User.new(
+        id: 1,
+        name: 'Vadim',
+        username: 'installero',
+        avatar_url: 'https://secure.gravatar.com/avatar/71269686e0f757ddb4f73614f43ae445?s=100'
+      ),
+      User.new(id: 2, name: 'Misha', username: 'aristofun')
+    ]
   end
 
   def new
@@ -10,16 +19,16 @@ class UsersController < ApplicationController
 
   def show
     @user = User.new(
-      name: 'Valentin',
-      username: 'ignessio',
-      avatar_url: 'https://ru.gravatar.com/userimage/215164627/0794f2ef04dde43deadf0f0732c316fe.png'
-     )
+      name: 'Vadim',
+      username: 'installero',
+      avatar_url: 'https://secure.gravatar.com/avatar/71269686e0f757ddb4f73614f43ae445?s=100'
+    )
 
-     @questions = [
-       Question.new(text: 'Какие дела?', created_at: Date.parse('16.01.2022')),
-       Question.new(text: 'В чем смысл учебы?', created_at: Date.parse('16.01.2022'))
-     ]
+    @questions = [
+      Question.new(text: 'Как дела?', created_at: Date.parse('16.01.2022')),
+      Question.new(text: 'В чем смысл учебы?', created_at: Date.parse('16.01.2022'))
+    ]
 
-     @new_question = Question.new
+    @new_question = Question.new
   end
 end
