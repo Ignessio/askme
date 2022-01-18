@@ -10,10 +10,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    @user.save
+    if @user.save
+      redirect_to root_url, notice: 'Пользователь успешно зарегистрирован!'
+    else
+      render 'new'
+    end
+  end
+
+  def edit
   end
 
   def show
+    @user = User.find params[:id]
+    @questions = @user.questions.order(created_at: :desc)
+
+    @new_question = @user.questions.build
   end
 
   private
