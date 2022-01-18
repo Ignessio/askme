@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :load_user, except: [:index, :new, :create]
+
   def index
     @users = User.all
   end
@@ -20,14 +23,26 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Данные обновлены!'
+    else
+      render 'edit'
+    end
+  end
+
   def show
-    @user = User.find params[:id]
     @questions = @user.questions.order(created_at: :desc)
 
     @new_question = @user.questions.build
 end
 
   private
+
+  def load_user
+    @user ||= User.find params[:id]
+  end
+
   def user_params
     params.require(:user).
           permit(
