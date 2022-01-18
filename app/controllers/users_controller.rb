@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @questions = @user.questions.order(created_at: :desc)
 
     @new_question = @user.questions.build
-  end
+end
 
   private
   def user_params

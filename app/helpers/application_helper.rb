@@ -7,13 +7,13 @@ module ApplicationHelper
     mod_ex = number % 100
     mod = number % 10
 
-    return "Всего: #{number} ответов" if (11..14).include?(mod_ex)
+    return "Всего: #{number} вопросов" if (11..14).include?(mod_ex)
 
     case mod
     when 1
-      "Всего: #{number} вопросов"
+      "Всего: #{number} вопрос"
     when 2..4
-      "Всего: #{number} вопросов"
+      "Всего: #{number} вопроса"
     else
       "Всего: #{number} вопросов"
     end
