@@ -37,6 +37,10 @@ class UsersController < ApplicationController
   def show
     @questions = @user.questions.order(created_at: :desc)
 
+    @questions_all = @questions.count
+    @questions_answered = @questions.where.not(answer: [nil, ""]).count
+    @questions_unanswered = @questions_all - @questions_answered
+
     @new_question = @user.questions.build
 end
 
