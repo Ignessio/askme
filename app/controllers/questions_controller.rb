@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
-      redirect_to user_path(@question.user) notice: 'Вопрос создан'
+      redirect_to user_path(@question.user), notice: 'Вопрос создан'
     else
       render :new
     end
@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
   def destroy
     user = @question.user
     @question.destroy
-    
+
     redirect_to user_path(user), notice: 'Вопрос удален'
   end
 
@@ -39,7 +39,6 @@ class QuestionsController < ApplicationController
       reject_user unless @question.user == current_user
     end
 
-    # Only allow a list of trusted parameters through.
     def question_params
       params.require(:question).permit(:user_id, :text, :answer)
     end
