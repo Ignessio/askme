@@ -3,19 +3,19 @@ module ApplicationHelper
     user.avatar_url.presence || asset_pack_path('media/images/avatar.jpg')
   end
 
-  def inclination(number)
+  def inclination(number, one, some, many)
     mod_ex = number % 100
     mod = number % 10
 
-    return "Всего: #{number} вопросов" if (11..14).include?(mod_ex)
+    return many if (11..14).include?(mod_ex)
 
     case mod
     when 1
-      "Всего: #{number} вопрос"
+      one
     when 2..4
-      "Всего: #{number} вопроса"
+      some
     else
-      "Всего: #{number} вопросов"
+      many
     end
   end
 
