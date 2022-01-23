@@ -24,6 +24,11 @@
   margin-top: 10px;
 }
 
+.buffer-both-extra-small {
+  margin-bottom: 8px;
+  margin-top: 5px;
+}
+
 .buffer-both-large {
   margin-bottom: 40px;
   margin-top: 40px;

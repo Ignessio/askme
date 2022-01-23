@@ -16,6 +16,13 @@
   </h2>
 </div>
 
+<div class="container">
+  <div class="buffer-both-extra-small text-center text-extra-small">
+    <%= link_to 'Удалить аккаунт', user_path(@user),
+                method: :delete, data: {confirm: 'Вы уверены, что хотите удалить свой аккаунт?'} if current_user == @user %>
+  </div>
+</div>
+
 <div class="user-details">
   <div class="user-ask-button container text-center">
     <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
