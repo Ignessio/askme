@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
 
-    @question[:author_id] = current_user.id if current_user.present?
+    @question.author = current_user
 
     if @question.save
       redirect_to user_path(@question.user), notice: 'Вопрос создан'
@@ -33,20 +33,21 @@ class QuestionsController < ApplicationController
   end
 
   private
-    def load_question
-      @question = Question.find(params[:id])
-    end
 
-    def authorize_user
-      reject_user unless @question.user == current_user
-    end
+  def load_question
+    @question = Question.find(params[:id])
+  end
 
-    def question_params
-      if current_user.present? &&
-        params[:question][:user_id].to_i == current_user.id
-        params.require(:question).permit(:user_id, :text, :answer)
-      else
-        params.require(:question).permit(:user_id, :text)
-        end
+  def authorize_user
+    reject_user unless @question.user == current_user
+  end
+
+  def question_params
+    if current_user.present? &&
+      params[:question][:user_id].to_i == current_user.id
+      params.require(:question).permit(:user_id, :text, :answer)
+    else
+      params.require(:question).permit(:user_id, :text)
     end
+  end
 end
