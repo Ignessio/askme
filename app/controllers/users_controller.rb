@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @questions_unanswered = @questions_all - @questions_answered
 
     @new_question = @user.questions.build
-end
+  end
 
   private
 

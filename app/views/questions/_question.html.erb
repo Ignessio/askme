@@ -1,5 +1,14 @@
 <div class="question">
   <div class="question-content">
+    <div class="question-text text-small">
+    <% if question.author.present?%>
+      <%= "Вопрос от: "%>
+      <%= link_to "@#{question.author.username}", user_path(question.author_id) %>
+    <% else %>
+      <%= "Вопрос от анонимного пользователя"%>
+    <% end %>
+    </div>
+
     <div class="question-text text-lead">
       <%= question.text %>
     </div>
