@@ -3,6 +3,7 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   EMAIL_FORMAT = /\A\w+@\w+\.\w+\z/
   USERNAME_FORMAT = /\A\w+\z/
+  COLOR_FORMAT = /\A(#[\d\w]+|\w+\((?:\d+%?(?:,\s)*){3}(?:\d*\.?\d+)?\))\z/
 
   has_many :questions, dependent: :destroy
 
@@ -10,6 +11,7 @@ class User < ApplicationRecord
 
   before_validation :convert_to_downcase
   before_save :encrypt_password
+  before_update :check_color
 
   validates :username,
            presence: true,
@@ -28,6 +30,10 @@ class User < ApplicationRecord
             on: :create
 
   private
+
+  def check_color
+    color if color =~ COLOR_FORMAT
+  end
 
   def convert_to_downcase
     username&.downcase!
