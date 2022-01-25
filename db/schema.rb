@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_123155) do
+ActiveRecord::Schema.define(version: 2022_01_25_154328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_123155) do
     t.string "password_hash"
     t.string "password_salt"
     t.string "avatar_url"
-    t.string "color"
+    t.string "color", default: "#005a55"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

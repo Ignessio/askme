@@ -1,5 +1,3 @@
-require 'openssl'
-
 class User < ApplicationRecord
   ITERATIONS = 20000
   DIGEST = OpenSSL::Digest::SHA256.new
@@ -30,7 +28,7 @@ class User < ApplicationRecord
             on: :create
 
   private
-  
+
   def convert_to_downcase
     username&.downcase!
     email&.downcase!
@@ -52,11 +50,7 @@ class User < ApplicationRecord
   end
 
   def self.authenticate(email, password)
-    user = find_by(email: email)
-    if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
-      user
-    else
-      nil
-    end
+    user = find_by(email: email.downcase)
+    user if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
   end
 end
