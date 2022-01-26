@@ -1,0 +1,5 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        avatar_url: URL аватарки

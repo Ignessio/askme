@@ -3,11 +3,11 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   EMAIL_FORMAT = /\A\w+@\w+\.\w+\z/
   USERNAME_FORMAT = /\A\w+\z/
-  COLOR_FORMAT = /\A#([a-f\d]){3,6}\z/i
-
-  has_many :questions, dependent: :destroy
+  COLOR_FORMAT = /\A#\h{3}{1,2}\z/
 
   attr_accessor :password
+
+  has_many :questions, dependent: :destroy
 
   before_validation :convert_to_downcase
   before_save :encrypt_password
@@ -30,8 +30,20 @@ class User < ApplicationRecord
             on: :create
 
   validates :color,
-            format: { with: COLOR_FORMAT },
-            allow_nil: true
+            format: { with: COLOR_FORMAT }
+
+  def self.authenticate(email, password)
+    user = find_by(email: email&.downcase)
+    user if user.present? && user.password_hash == User.hash_to_string(
+      OpenSSL::PKCS5.pbkdf2_hmac(
+        password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST
+        )
+      )
+  end
+
+  def self.hash_to_string(password_hash)
+    password_hash.unpack('H*')[0]
+  end
 
   private
 
@@ -49,14 +61,5 @@ class User < ApplicationRecord
         )
       )
     end
-  end
-
-  def self.hash_to_string(password_hash)
-    password_hash.unpack('H*')[0]
-  end
-
-  def self.authenticate(email, password)
-    user = find_by(email: email.downcase)
-    user if user.present? && user.password_hash == User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password, user.password_salt, ITERATIONS, DIGEST.length, DIGEST))
   end
 end
