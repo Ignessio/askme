@@ -32,5 +32,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-# Ignore makefile
+# Ignore all test and make files
 Makefile
+/test/*
