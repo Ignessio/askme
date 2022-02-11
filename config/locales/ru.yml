@@ -1,5 +1,8 @@
 ru:
   activerecord:
+    models:
+      user: Пользователь
+      question: Вопрос
     attributes:
       user:
         username: Никнейм пользователя
