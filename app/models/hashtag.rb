@@ -1,6 +1,9 @@
 class Hashtag < ApplicationRecord
   HASHTAG_FORMAT = /#[[:word:]-]+/
 
+  has_many :taggings, dependent: :destroy
+  has_many :questions, through: :taggings
+
   before_validation :convert_to_downcase
 
   validates :body,

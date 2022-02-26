@@ -1,4 +1,7 @@
 class Question < ApplicationRecord
+  has_many :taggings, dependent: :destroy
+  has_many :hashtags, through: :taggings
+
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
 
