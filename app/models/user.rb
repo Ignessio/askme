@@ -14,10 +14,10 @@ class User < ApplicationRecord
   before_update :color
 
   validates :username,
-           presence: true,
-           uniqueness: true,
-           length: { maximum: 40 },
-           format: { with: USERNAME_FORMAT }
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 40 },
+            format: { with: USERNAME_FORMAT }
 
   validates :email,
             presence: true,
