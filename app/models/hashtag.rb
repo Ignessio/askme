@@ -6,7 +6,10 @@ class Hashtag < ApplicationRecord
 
   before_validation :convert_to_downcase
 
-  validates :name, presence: true, format: {with: HASHTAG_FORMAT}
+  validates :name,
+            presence: true,
+            uniqueness: true,
+            format: {with: HASHTAG_FORMAT}
 
   private
 
