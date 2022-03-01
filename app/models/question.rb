@@ -19,7 +19,7 @@ class Question < ApplicationRecord
 
   def create_hashtags
     find_hashtags.each do |name|
-      hashtags.create(name: name)
+      Hashtag.create_or_find_by(name: name)
     end
   end
 end
