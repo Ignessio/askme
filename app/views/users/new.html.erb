@@ -15,32 +15,32 @@
         <% end %>
 
         <div class="form-field">
-          <%= f.label :email, 'Логин (email)', class: 'form-label' %>
+          <%= f.label :email, t('.email') %>
           <%= f.text_field :email, class: 'form-text-field' %>
         </div>
 
         <div class="form-field">
-          <%= f.label :username, 'Никнейм', class: 'form-label' %>
+          <%= f.label :username, t('.username') %>
           <%= f.text_field :username, class: 'form-text-field' %>
         </div>
 
         <div class="form-field">
-          <%= f.label :name, 'Имя', class: 'form-label' %>
+          <%= f.label :name, t('.name') %>
           <%= f.text_field :name, class: 'form-text-field' %>
         </div>
 
         <div class="form-field">
-          <%= f.label :password, 'Пароль', class: 'form-label' %>
+          <%= f.label :password, t('.password') %>
           <%= f.password_field :password, class: 'form-text-field' %>
         </div>
 
         <div class="form-field">
-          <%= f.label :password_confirmation, 'Пароль ещё раз', class: 'form-label' %>
+          <%= f.label :password_confirmation, t('.password_confirmation') %>
           <%= f.password_field :password_confirmation, class: 'form-text-field' %>
         </div>
 
         <div class="form-action">
-          <%= f.submit 'Зарегистрироваться', class: 'button button-small button-dark' %>
+          <%= f.submit t('.submit'), class: 'button button-small button-dark' %>
         </div>
       <% end %>
     </div>

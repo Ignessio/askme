@@ -7,17 +7,17 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to root_path, alert: 'Вы уже залогились' if current_user.present?
+    redirect_to root_path, alert: t('.signed_in') if current_user.present?
     @user = User.new
   end
 
   def create
-    redirect_to root_path, alert: 'Вы уже залогились' if current_user.present?
+    redirect_to root_path, alert: t('.signed_in') if current_user.present?
     @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url, notice: 'Пользователь успешно зарегистрирован!'
+      redirect_to root_url, notice: t('.signed_up')
     else
       render 'new'
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, alert: 'Ваш аккаунт удален!'
+    redirect_to root_path, alert: t('.deleted')
   end
 
   def edit
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: 'Данные обновлены!'
+      redirect_to user_path(@user), notice: t('.updated')
     else
       render 'edit'
     end
@@ -41,11 +41,6 @@ class UsersController < ApplicationController
 
   def show
     @questions = @user.questions.order(created_at: :desc)
-
-    @questions_all = @questions.count
-    @questions_answered = @questions.where.not(answer: [nil, ""]).count
-    @questions_unanswered = @questions_all - @questions_answered
-
     @new_question = @user.questions.build
   end
 

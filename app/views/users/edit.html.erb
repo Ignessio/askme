@@ -1,5 +1,5 @@
 <div class="container content-wrapper buffer-both">
-  <h1 class="title-medium">Править профиль</h1>
+  <h1 class="title-medium"><%= t('.title') %></h1>
 
   <div class="column-1-2">
     <%= form_for(@user) do |f| %>
@@ -33,9 +33,7 @@
         <%= f.color_field :color %>
       </div>
 
-      <div class="buffer-top-large buffer-bottom">
-        Если не хотите менять пароль — оставьте эти поля пустыми!
-      </div>
+      <div class="buffer-top-large buffer-bottom"><%= t('.note') %></div>
 
       <div class="form-field">
         <%= f.label :password, class: 'form-label' %>
@@ -48,7 +46,7 @@
       </div>
 
       <div class="form-action buffer-top">
-        <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
+        <%= f.submit t('.save'), class: 'button button-dark button-small' %>
       </div>
     <% end %>
   </div>

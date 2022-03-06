@@ -9,7 +9,7 @@ ru:
   activerecord:
     models:
       user: 'Пользователь'
-      question: ''
+      question: 'Вопрос'
     attributes:
       user:
         username: Никнейм пользователя
@@ -18,3 +18,82 @@ ru:
         color: Цвет фона
         password: Пароль
         password_confirmation: Подтверждение пароля
+      question:
+        text: 'Вопрос'
+        answer: 'Овет'
+
+  application:
+    not_allowed: 'Сюда вам доступ запрещен!'
+
+  hashtags:
+
+  questions:
+    form:
+      question: 'Вопрос'
+      answer: 'Ответ'
+      submit: 'Сохранить'
+      back: 'Вернуться'
+    question:
+      question_from_registered: 'Вопрос от: '
+      question_anonymous: 'Анонимный вопрос'
+      delete_confirm: 'Точно удалить вопрос?'
+
+    created: 'Ваш вопрос добавлен'
+    updated: 'Вопрос сохранен'
+    deleted: 'Вопрос удален'
+
+  sessions:
+    new:
+      title: 'Войти на сайт'
+      email: 'Логин (email)'
+      password: 'Пароль'
+      submit: 'Войти'
+    signed_in: 'Вы успешно залогинились'
+    wrong_credentials: 'Не правильный email или пароль'
+    signed_out: 'Вы разлогинились. Приходите еще!'
+
+  users:
+    index:
+      title: 'Наши пользователи'
+    edit:
+      title: 'Изменить профиль'
+      note: 'Если не хотите менять пароль — оставьте эти поля пустыми!'
+      save: 'Сохранить'
+    new:
+      signed_in: 'Вы уже залогинились'
+      email: 'Логин (email)'
+      username: 'Никнейм'
+      name: 'Имя'
+      password: 'Пароль'
+      password_confirmation: 'Подтверждение пароля'
+      submit: 'Зарегистрироваться'
+    create:
+      signed_up: 'Вы успешно зарегистрировались!'
+      signed_in: 'Вы уже залогинились'
+    destroy:
+      deleted: 'Ваш аккаунт удален!'
+      signed_up: 'Вы успешно зарегистрировались!'
+    update:
+      updated: 'Данные обновлены!'
+    show:
+      question_for: 'Ваш вопрос для'
+      edit: 'Редактировать профиль'
+      delete: 'Удалить аккаунт'
+      delete_confirm: 'Вы уверены, что хотите удалить свой аккаунт?'
+      ask_me: 'Спроси меня'
+      ask_question: 'Задать вопрос'
+
+  question:
+    one: 'вопрос'
+    few: 'вопроса'
+    many: 'вопросов'
+  answer:
+    one: 'ответ'
+    few: 'ответа'
+    many: 'ответов'
+  unanswered:
+    one: 'вопрос без ответа'
+    few: 'вопроса без ответа'
+    many: 'вопросов без ответа'
+
+

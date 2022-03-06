@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def reject_user
-    redirect_to root_path, alert: 'Сюда вам доступ запрещен!'
+    redirect_to root_path, alert: t('.not_allowed')
   end
 end

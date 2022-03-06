@@ -2,24 +2,23 @@ class QuestionsController < ApplicationController
   before_action :load_question, only: %i[show edit update destroy]
   before_action :authorize_user, except: [:create]
 
-  def edit
-  end
-
   def create
     @question = Question.new(question_params)
-
     @question.author = current_user
 
     if @question.save
-      redirect_to user_path(@question.user), notice: 'Вопрос создан'
+      redirect_to user_path(@question.user), notice: t('.created')
     else
-      render :new
+      render :edit
     end
+  end
+
+  def edit
   end
 
   def update
     if @question.update(question_params)
-      redirect_to user_path(@question.user), notice: 'Вопрос сохранен'
+      redirect_to user_path(@question.user), notice: t('.updated')
     else
       render :edit
     end
@@ -29,7 +28,7 @@ class QuestionsController < ApplicationController
     user = @question.user
     @question.destroy
 
-    redirect_to user_path(user), notice: 'Вопрос удален'
+    redirect_to user_path(user), notice: t('.deleted')
   end
 
   private

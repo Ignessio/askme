@@ -2,10 +2,10 @@
   <div class="question-content">
     <div class="question-text text-small">
     <% if question.author.present?%>
-      <%= "Вопрос от: "%>
+      <%= t('.question_from_registered') %>
       <%= link_to "@#{question.author.username}", question.author %>
     <% else %>
-      <%= "Вопрос от анонимного пользователя"%>
+      <%= t('.question_anonymous') %>
     <% end %>
     </div>
 
@@ -30,7 +30,7 @@
     <div class="question-actions">
       <%= link_to fa_icon(edit_icon), edit_question_path(question) %>
       <%= link_to fa_icon('trash-o'), question_path(question),
-                  method: :delete, data: {confirm: 'Точно удалить вопрос?'} %>
+                  method: :delete, data: {confirm: t('.delete_confirm')} %>
     </div>
   <% end %>
 </div>
