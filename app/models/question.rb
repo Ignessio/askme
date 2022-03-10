@@ -1,9 +1,9 @@
 class Question < ApplicationRecord
-  has_many :taggings, dependent: :destroy
-  has_many :hashtags, through: :taggings
-
   belongs_to :user
   belongs_to :author, class_name: 'User', optional: true
+
+  has_many :taggings, dependent: :destroy
+  has_many :hashtags, through: :taggings
 
   after_commit :create_hashtags, on: %i[create update]
 

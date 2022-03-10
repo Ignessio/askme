@@ -2,7 +2,7 @@
   <div class="question-content">
     <div class="question-text text-small">
     <% if question.author.present?%>
-      <%= t('.question_from_registered') %>
+      <%= t('.question_registered') %>
       <%= link_to "@#{question.author.username}", question.author %>
     <% else %>
       <%= t('.question_anonymous') %>

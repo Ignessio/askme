@@ -34,7 +34,7 @@ ru:
       submit: 'Сохранить'
       back: 'Вернуться'
     question:
-      question_from_registered: 'Вопрос от: '
+      question_registered: 'Вопрос от: '
       question_anonymous: 'Анонимный вопрос'
       delete_confirm: 'Точно удалить вопрос?'
 
@@ -60,6 +60,7 @@ ru:
       note: 'Если не хотите менять пароль — оставьте эти поля пустыми!'
       save: 'Сохранить'
     new:
+      title: 'Присоединяйся к нам!'
       signed_in: 'Вы уже залогинились'
       email: 'Логин (email)'
       username: 'Никнейм'
