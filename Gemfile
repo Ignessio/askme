@@ -8,6 +8,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'webpacker', '~> 5.0'
 gem 'rails-i18n'
+gem 'dry-transaction', '~> 0.13.3'
 
 group :development, :test do
   gem 'pry-rails'
@@ -17,3 +18,4 @@ group :development do
   gem 'web-console', '>= 4.1.0'
   gem 'rack-mini-profiler', '~> 2.0'
 end
+
