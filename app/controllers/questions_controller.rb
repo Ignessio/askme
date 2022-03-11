@@ -1,15 +1,20 @@
 class QuestionsController < ApplicationController
-  before_action :load_question, only: %i[show edit update destroy]
+  before_action :load_question, only: %i[edit update destroy]
   before_action :authorize_user, except: [:create]
 
   def create
-    @question = Question.new(question_params)
-    @question.author = current_user
+    Questions::Create.(
+      params: question_create_params,
+      current_user: current_user
+    ) do |m|
+      m.failure :validation do |result|
+        @question = result[:question]
+        render :edit
+      end
 
-    if @question.save
-      redirect_to user_path(@question.user), notice: t('.created')
-    else
-      render :edit
+      m.success do |result|
+        redirect_to user_path(result[:question].user), notice: t('.created')
+      end
     end
   end
 
@@ -17,7 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    if @question.update(question_params)
+    if @question.update(question_update_params)
       redirect_to user_path(@question.user), notice: t('.updated')
     else
       render :edit
@@ -27,7 +32,6 @@ class QuestionsController < ApplicationController
   def destroy
     user = @question.user
     @question.destroy
-
     redirect_to user_path(user), notice: t('.deleted')
   end
 
@@ -41,12 +45,11 @@ class QuestionsController < ApplicationController
     reject_user unless @question.user == current_user
   end
 
-  def question_params
-    if current_user.present? &&
-      params[:question][:user_id].to_i == current_user.id
-      params.require(:question).permit(:user_id, :text, :answer)
-    else
-      params.require(:question).permit(:user_id, :text)
-    end
+  def question_create_params
+    params.require(:question).permit(:user_id, :text)
+  end
+
+  def question_update_params
+    params.require(:question).permit(:answer)
   end
 end
