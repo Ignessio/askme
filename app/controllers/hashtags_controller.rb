@@ -1,10 +1,6 @@
 class HashtagsController < ApplicationController
-  def create
-  end
-
   def show
-  end
-
-  def destroy
+    hashtag = Hashtag.find_by!(name: params[:name])
+    @questions = hashtag.questions
   end
 end
