@@ -85,7 +85,7 @@ ru:
     one: 'вопрос'
     few: 'вопроса'
     many: 'вопросов'
-  answer:
+  answered:
     one: 'ответ'
     few: 'ответа'
     many: 'ответов'

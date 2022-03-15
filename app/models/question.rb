@@ -5,5 +5,8 @@ class Question < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :hashtags, through: :taggings
 
+  scope :answered, -> { where.not(answer: nil) }
+  scope :unanswered, -> { where(answer: nil) }
+
   validates :text, presence: true, length: { maximum: 255 }
 end
