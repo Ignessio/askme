@@ -1,4 +1,7 @@
 ru:
+  application:
+    not_allowed: 'Сюда вам доступ запрещен!'
+
   layouts:
     application:
       title: 'Хорошие вопросы'
@@ -7,9 +10,6 @@ ru:
       sign_out: 'Выйти'
 
   activerecord:
-    models:
-      user: 'Пользователь'
-      question: 'Вопрос'
     attributes:
       user:
         username: Никнейм пользователя
@@ -22,22 +22,19 @@ ru:
         text: 'Вопрос'
         answer: 'Овет'
 
-  application:
-    not_allowed: 'Сюда вам доступ запрещен!'
-
-  hashtags:
-
   questions:
+    edit:
+      not_allowed: 'Вы не можете отвечать'
     form:
       question: 'Вопрос'
       answer: 'Ответ'
       submit: 'Сохранить'
+      or: 'или'
       back: 'Вернуться'
     question:
       question_registered: 'Вопрос от: '
       question_anonymous: 'Анонимный вопрос'
       delete_confirm: 'Точно удалить вопрос?'
-
     created: 'Ваш вопрос добавлен'
     updated: 'Вопрос сохранен'
     deleted: 'Вопрос удален'
@@ -96,5 +93,3 @@ ru:
     one: 'вопрос без ответа'
     few: 'вопроса без ответа'
     many: 'вопросов без ответа'
-
-

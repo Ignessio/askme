@@ -26,7 +26,7 @@
 
     <div class="form-action buffer-both">
       <%= f.submit t('.submit'), class: 'button button-dark button-small' %>
-      или
+      <%= t('.or') %>
       <%= link_to t('.back'), user_path(@question.user) %>
     </div>
   <% end %>
