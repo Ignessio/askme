@@ -6,13 +6,17 @@ class QuestionSave
   def call
     question.transaction do
       question.save
+      question_hashtag(question)
+    end
+  end
 
-      question.hashtags = "#{question.text} #{question.answer}".
+  def question_hashtag(question)
+    question.hashtags =
+      "#{question.text} #{question.answer}".
         downcase.
         scan(Hashtag::HASHTAG_FORMAT).
         uniq.
         map { |hashtag| Hashtag.create_or_find_by(name: hashtag.gsub("#", "")) }
-    end
   end
 
   private
@@ -23,4 +27,3 @@ class QuestionSave
     @question = question
   end
 end
-
