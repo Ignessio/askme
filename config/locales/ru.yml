@@ -23,6 +23,9 @@ ru:
         answer: 'Овет'
 
   questions:
+    created: 'Ваш вопрос добавлен'
+    updated: 'Вопрос сохранен'
+    deleted: 'Вопрос удален'
     edit:
       not_allowed: 'Вы не можете отвечать'
     form:
@@ -35,9 +38,10 @@ ru:
       question_registered: 'Вопрос от: '
       question_anonymous: 'Анонимный вопрос'
       delete_confirm: 'Точно удалить вопрос?'
-    created: 'Ваш вопрос добавлен'
-    updated: 'Вопрос сохранен'
-    deleted: 'Вопрос удален'
+      
+  hashtags:
+    show:
+      question_to: 'Вопрос для пользователя: '
 
   sessions:
     new:

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :load_user, except: %i[index new create]
-  before_action :authorize_user, except: %i[index new create show]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @users = User.all
@@ -24,9 +24,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    @user.destroy
-    redirect_to root_path, alert: t('.deleted')
+  def show
+    @questions = @user.questions.order(created_at: :desc)
+    @new_question = @user.questions.build
+
+    @questions_count = @questions.count
+    @answered_count = @questions.answered.count
+    @unanswered_count = @questions.unanswered.count
   end
 
   def edit
@@ -40,17 +44,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
-    @questions = @user.questions.order(created_at: :desc)
-    @new_question = @user.questions.build
-
-    @questions_count = @questions.count
-    @answered_count = @questions.answered.count
-    @unanswered_count = @questions.unanswered.count
-end
+  def destroy
+    @user.destroy
+    redirect_to root_path, alert: t('.deleted')
+  end
 
   private
-
   def authorize_user
     reject_user unless @user == current_user
   end

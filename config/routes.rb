@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: %i[new create destroy]
-  resources :questions, except: %i[new index show]
+  resources :questions, except: %i[index new show]
   resources :hashtags, only: :show, param: :name
 
   get 'sign_up' => 'users#new'

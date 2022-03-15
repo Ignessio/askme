@@ -28,6 +28,23 @@ class QuestionsController < ApplicationController
       render :edit
     end
   end
+  
+  # def update
+  #   Question::Update.(
+  #     params: question_update_params,
+  #     current_user: current_user
+  #   ) do |m|
+  #     m.failure :validation do |result|
+  #       @question = result[:question]
+  #       render :edit
+  #     end
+
+  #     m.success do |result|
+  #       @question = result[:question]
+  #       redirect_to user_path(result[:question].user), notice: t('.updated')
+  #     end
+  #   end
+  # end
 
   def destroy
     user = @question.user
@@ -36,7 +53,6 @@ class QuestionsController < ApplicationController
   end
 
   private
-
   def load_question
     @question = Question.find(params[:id])
   end
