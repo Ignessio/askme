@@ -67,7 +67,7 @@
   <div class="user-questions buffer-both">
     <div class="questions-list">
       <% @questions.each do |question| %>
-        <%= render partial: 'questions/question', object: question %>
+        <%= render question %>
       <% end %>
     </div>
   </div>
