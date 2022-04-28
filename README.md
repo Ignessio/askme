@@ -1,24 +1,41 @@
-# README
+## Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  The askme application is the clear and simple way to ask any question and get the answers.
+  Registered users can apply and modify questions, put answers, change avatars and the color scheme of own profile page.
+  Basic search using hashtags is available as well.
 
-Things you may want to cover:
+## Language and framework
+  * Ruby 3.0.2
+  * Rails 6.1.5
 
-* Ruby version
+## How to use
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+  * Demo
+  ```
+  https://miniask.herokuapp.com/
+  ```
+  * Download folder from repository or use clonning
+  ```
+  git clone git@github.com:Ignessio/askme
+  ```
+  * Install required labraries
+  ```
+  bundle install
+  ```
+  * Manage Nodejs dependencies
+  ```
+  yarn
+  ```
+  * Create database and apply migrations
+  ```
+  rails db:create db:migrate
+  ```
+  * Add your own secrets to credentials.yml.enc file
+  * Start rails server using
+  ```
+  bundle exec rails start
+  ```
+  * Open new window in preffered browser and enter page address
+  ```
+  http://localhost:3000/
+  ```
