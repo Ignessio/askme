@@ -4,6 +4,10 @@
   Registered users can apply and modify questions, put answers, change avatars and the color scheme of own profile page.
   Basic search using hashtags is available as well.
 
+## Demo
+
+  - [miniask](https://miniask.herokuapp.com/)
+
 ## Language and framework
   * Ruby 3.0.2
   * Rails 6.1.5
