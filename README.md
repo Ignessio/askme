@@ -14,15 +14,11 @@
 
 ## How to use
 
-  * Demo
-  ```
-  https://miniask.herokuapp.com/
-  ```
   * Download folder from repository or use clonning
   ```
   git clone git@github.com:Ignessio/askme
   ```
-  * Install required labraries
+  * Install required libraries
   ```
   bundle install
   ```
